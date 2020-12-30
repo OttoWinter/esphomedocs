@@ -1,5 +1,5 @@
 ST7920 LCD Graphic Display
-====================
+==========================
 
 .. seo::
     :description: Instructions for setting up ST7920 LCD display drivers.
@@ -8,7 +8,7 @@ ST7920 LCD Graphic Display
 .. _st7920:
 
 Usage
---------
+-----
 
 The ``st7920`` display platform allows you to use
 ST7920 (`datasheet <http://www.elecrow.com/download/SPE_IM120424014_EONE_12864_Graphic_LCD.pdf>`__,
