@@ -139,6 +139,7 @@ Sensor Components
     MPU6050, components/sensor/mpu6050, mpu6050.jpg
     MQTT Subscribe, components/sensor/mqtt_subscribe, mqtt.png
     MS5611, components/sensor/ms5611, ms5611.jpg
+    Nextion Sensor, components/sensor/nextion, nextion.jpg
     NTC Thermistor, components/sensor/ntc, ntc.jpg
     PMSX003, components/sensor/pmsx003, pmsx003.svg
     Pulse Counter, components/sensor/pulse_counter, pulse.svg
@@ -259,6 +260,7 @@ Switch Components
     UART Switch, components/switch/uart, uart.svg
     Custom Switch, components/switch/custom, language-cpp.svg
     Tuya Switch, components/switch/tuya, tuya.png
+    Nextion Switch, components/switch/nextion, nextion.jpg
 
 Fan Components
 --------------

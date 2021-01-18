@@ -1,13 +1,13 @@
-Nextion Touch Component
-=======================
+Nextion Switch Component
+========================
 
 .. seo::
-    :description: Instructions for setting up Nextion touch binary sensors.
+    :description: Instructions for setting up Nextion switch.
     :image: nextion.jpg
 
-The ``nextion`` binary sensor platform lets you track when a component on the display is
-touched or not. The binary sensor will turn on when the component with the given component and page id is
-pressed on, and will turn off as soon as the finger is released.
+The ``nextion`` switch lets you track when a component on the display is
+switched on or off. The behavior is quite similar to the Dual state push button as a binary sensor. In case a switch is used the 
+``nextion`` screen will be updated if the switch is activated within Home Assistant.
 
 See :doc:`/components/display/nextion` for setting up the display
 
@@ -18,11 +18,12 @@ See :doc:`/components/display/nextion` for setting up the display
       - platform: nextion
         # ...
 
-    binary_sensor:
+    switch:
       - platform: nextion
         page_id: 0
         component_id: 2
-        name: "Nextion Component 2 Touch"
+        name: "Nextion Component Switch"
+        button_id: "bt0"
 
 Configuration variables:
 ------------------------
@@ -30,27 +31,26 @@ Configuration variables:
 - **name** (**Required**, string): The name of the binary sensor.
 - **page_id** (**Required**, int): The ID of the page the component is on. Use ``0`` for the default page.
 - **component_id** (**Required**, int): The ID (the number, not name!) of the component to track.
+- **button_id** (**Required**, string): The ID of button within the Nextion Configuration.
 - **nextion_id** (*Optional*, :ref:`config-id`): Manually specify the ID of the Nextion display.
-- All other options from :ref:`Binary Sensor <config-binary_sensor>`.
+- All other options from :ref:`Switch <config-switch>`.
 
-Dual State Push Button:
------------------------
+Required Nextion Code:
+----------------------
 
-To enable to use the Dual State Push Button some code has to be added in the Nextion editor. In the configuration above only the push on
-the screen is registered. So touching the object is on and releasing the object is off. This works well with a push button but not with a Dual 
-state push button.
+To enable to use the Dual State Push Button (Switch) some code has to be added in the Nextion editor. 
 
-The following code can be added in the Nextion Editor to the configuration of the Dual State Push button:
+The following code can has to be added in the Nextion Editor to the configuration of the Dual State Push button acting as a switch:
 
 .. code-block:: c
 
-    printh 65
+    printh 90
     printh 00
     printh 03
     prints bt0.val,1
     printh FF FF FF
 
-- **printh 65** (**Required**): 65 is the ID to register the PRESS / RELEASE of a item
+- **printh 90** (**Required**): 90 is a special code, created to register feedback from switch
 - **printh 00** (**Required**): The ID of the page the component is on.
 - **printh 03** (**Required**): ITEM ID could be replaced with prints ID.val,1
 - **prints bt0.val,1** (**Required**): Where bt0 the id of the button is = equal to id in configuration
@@ -60,8 +60,8 @@ See Also
 --------
 
 - :doc:`/components/display/nextion`
+- :doc:`/components/binary_sensor/nextion`
 - :doc:`/components/sensor/nextion`
-- :doc:`/components/switch/nextion`
 - :doc:`index`
 - :apiref:`nextion/nextion.h`
 - :ghedit:`Edit`
