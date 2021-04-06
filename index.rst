@@ -378,6 +378,7 @@ Misc Components
     Exposure Notifications, components/exposure_notifications, exposure_notifications.png
     RTTTL Buzzer, components/rtttl, buzzer.jpg
     Prometheus, components/prometheus, prometheus.svg
+    Telegram Bot, components/telegram_bot, telegram_bot.png
 
 Additional Custom Components
 ----------------------------
