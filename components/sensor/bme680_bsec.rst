@@ -73,9 +73,6 @@ Hub Configuration:
 - **iaq_mode** (*Optional*, string): IAQ calculation mode. Default is ``static`` for static applications (e.g. fixed indoor devices).
   Can be ``mobile`` for mobile applications (e.g. carry-on devices).
 
-- **sample_rate** (*Optional*, string): Sample rate. Default is ``lp`` for low power consumption, sampling every 3 seconds.
-  Can be ``ulp`` for ultra low power, sampling every 5 minutes.
-
 - **state_save_interval** (*Optional*, :ref:`config-time`): The minimum interval at which to save calibrated BSEC algorithm state to
   flash so that calibration does have to start from zero on device restart. Defaults to ``6h``.
 
@@ -85,30 +82,35 @@ Sensor Configuration:
 
   - **name** (**Required**, string): The name for the temperature sensor.
   - **id** (*Optional*, :ref:`config-id`): Set the ID of this sensor for use in lambdas.
+  - **sample_rate** (*Optional*, string): Sample rate. Default is ``lp`` for low power consumption, sampling every 3 seconds. Can be ``ulp`` for ultra low power, sampling every 5 minutes.
   - All other options from :ref:`Sensor <config-sensor>`.
 
 - **pressure** (*Optional*): The information for the pressure sensor.
 
   - **name** (**Required**, string): The name for the pressure sensor.
-  - **id** (*Optional*, :ref:`config-id`): Set the ID of this sensor for use in lambdas.
+  - **id** (*Optional*, :ref:`config-id`): Set the ID of this sensor for use in lambdas
+  - **sample_rate** (*Optional*, string): Sample rate. Default is ``lp`` for low power consumption, sampling every 3 seconds. Can be ``ulp`` for ultra low power, sampling every 5 minutes.
   - All other options from :ref:`Sensor <config-sensor>`.
 
 - **humidity** (*Optional*): The information for the humidity sensor.
 
   - **name** (**Required**, string): The name for the humidity sensor.
   - **id** (*Optional*, :ref:`config-id`): Set the ID of this sensor for use in lambdas.
+  - **sample_rate** (*Optional*, string): Sample rate. Default is ``lp`` for low power consumption, sampling every 3 seconds. Can be ``ulp`` for ultra low power, sampling every 5 minutes.
   - All other options from :ref:`Sensor <config-sensor>`.
 
 - **gas_resistance** (*Optional*): The information for the gas sensor.
 
   - **name** (**Required**, string): The name for the gas resistance sensor.
   - **id** (*Optional*, :ref:`config-id`): Set the ID of this sensor for use in lambdas.
+  - **sample_rate** (*Optional*, string): Sample rate. Default is ``ulp`` for ultra low power, sampling every 5 minutes. Can be ``lp`` for low power consumption, sampling every 3 seconds.
   - All other options from :ref:`Sensor <config-sensor>`.
 
 - **iaq** (*Optional*): The information for the IAQ sensor.
 
   - **name** (**Required**, string): The name for the IAQ sensor.
   - **id** (*Optional*, :ref:`config-id`): Set the ID of this sensor for use in lambdas.
+  - **sample_rate** (*Optional*, string): Sample rate. Default is ``ulp`` for ultra low power, sampling every 5 minutes. Can be ``lp`` for low power consumption, sampling every 3 seconds.
   - All other options from :ref:`Sensor <config-sensor>`.
 
 - **iaq_accuracy** (*Optional*): The information for the numeric IAQ accuracy sensor.
@@ -121,12 +123,14 @@ Sensor Configuration:
 
   - **name** (**Required**, string): The name for the CO2 equivalent sensor.
   - **id** (*Optional*, :ref:`config-id`): Set the ID of this sensor for use in lambdas.
+  - **sample_rate** (*Optional*, string): Sample rate. Default is ``ulp`` for ultra low power, sampling every 5 minutes. Can be ``lp`` for low power consumption, sampling every 3 seconds.
   - All other options from :ref:`Sensor <config-sensor>`.
 
 - **breath_voc_equivalent** (*Optional*): The information for the Breath VOC equivalent humidity sensor.
 
   - **name** (**Required**, string): The name for the Breath VOC equivalent sensor.
   - **id** (*Optional*, :ref:`config-id`): Set the ID of this sensor for use in lambdas.
+  - **sample_rate** (*Optional*, string): Sample rate. Default is ``ulp`` for ultra low power, sampling every 5 minutes. Can be ``lp`` for low power consumption, sampling every 3 seconds.
   - All other options from :ref:`Sensor <config-sensor>`.
 
 Text Sensor Configuration:
@@ -166,6 +170,14 @@ For each sensor all other options from :ref:`Sensor <config-sensor>` and :ref:`T
         # Default: 0
         temperature_offset: 0
 
+        # Sample rate For iaq,gas resistance,co2 equivalent and breath voc equivalent sensors
+          # -----------
+          # Available options:
+          # - lp (low power - samples every 3 seconds)
+          # - ulp (ultra low power - samples every 5 minutes)
+          # Default: ulp
+        gas_sample_rate: ulp
+
         # IAQ calculation mode
         # --------------------
         # Available options:
@@ -173,14 +185,6 @@ For each sensor all other options from :ref:`Sensor <config-sensor>` and :ref:`T
         # - mobile (for on person or other moveable devices)
         # Default: static
         iaq_mode: static
-
-        # Sample rate
-        # -----------
-        # Available options:
-        # - lp (low power - samples every 3 seconds)
-        # - ulp (ultra low power - samples every 5 minutes)
-        # Default: lp
-        sample_rate: lp
 
         # Interval at which to save BSEC state
         # ------------------------------------
@@ -194,16 +198,37 @@ For each sensor all other options from :ref:`Sensor <config-sensor>` and :ref:`T
           name: "BME680 Temperature"
           filters:
             - median
+          # Sample rate
+          # -----------
+          # Available options:
+          # - lp (low power - samples every 3 seconds)
+          # - ulp (ultra low power - samples every 5 minutes)
+          # Default: lp
+          sample_rate: lp
         pressure:
           # Pressure in hPa
           name: "BME680 Pressure"
           filters:
             - median
+          # Sample rate
+          # -----------
+          # Available options:
+          # - lp (low power - samples every 3 seconds)
+          # - ulp (ultra low power - samples every 5 minutes)
+          # Default: lp
+          sample_rate: lp
         humidity:
           # Relative humidity %
           name: "BME680 Humidity"
           filters:
             - median
+          # Sample rate
+          # -----------
+          # Available options:
+          # - lp (low power - samples every 3 seconds)
+          # - ulp (ultra low power - samples every 5 minutes)
+          # Default: lp
+          sample_rate: lp
         gas_resistance:
           # Gas resistance in Ω
           name: "BME680 Gas Resistance"
