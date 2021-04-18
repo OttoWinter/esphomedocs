@@ -206,6 +206,7 @@ Binary Sensor Components
     RDM6300, components/binary_sensor/rdm6300, rdm6300.jpg
     TTP229, components/binary_sensor/ttp229, ttp229.jpg
     Tuya Binary Sensor, components/binary_sensor/tuya, tuya.png
+    Touch GUI, components/binary_sensor/touch_gui, touch-gui.svg
     Custom Binary Sensor, components/binary_sensor/custom, language-cpp.svg
 
 Output Components
