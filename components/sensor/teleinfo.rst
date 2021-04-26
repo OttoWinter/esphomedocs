@@ -4,7 +4,7 @@ Teleinformation from Linky electrical counter.
 .. seo::
     :description: Instructions for setting up French Teleinformation
     :image: teleinfo.jpg
-    :keywords: teleinfo
+    :keywords: teleinfo, linky
 
 The ``teleinfo`` component allows you to retrieve data from a 
 French electrical counter using Teleinformation (`datasheet <https://www.enedis.fr/sites/default/files/Enedis-NOI-CPT_54E.pdf>`__). It works with Linky electrical
@@ -60,17 +60,17 @@ simply press -/+ buttons on the counter and look for `Standard mode` or
     sensor:
       - platform: teleinfo
         tags:
-         - name: "HCHC"
+         - tag_name: "HCHC"
            sensor:
             name: "hchc"
             unit_of_measurement: "Wh"
             icon: mdi:flash
-         - name: "HCHP"
+         - tag_name: "HCHP"
            sensor:
             name: "hchp"
             unit_of_measurement: "Wh"
             icon: mdi:flash
-         - name: "PAPP"
+         - tag_name: "PAPP"
            sensor:
             name: "papp"
             unit_of_measurement: "VA"
@@ -96,6 +96,34 @@ Configuration variables:
 
 - **uart_id** (*Optional*, :ref:`config-id`): Manually specify the ID of the :ref:`UART Component <uart>` if you want
   to use multiple UART buses.
+
+
+.. warning::
+
+    UART hardware is recommanded for this sensor. The default Esphome's logger also use one hardware UART.
+    The ESP8266 only has two hardware UARTs, one of which is transmit-only (details in `Logger Component section <components/logger>`__).
+
+
+So to avoid crashes you can choose between these 2 recommandations :
+
+- Disable the logging via UART :
+    
+.. code-block:: yaml
+
+    logger:     
+      baud_rate: 0   # disable logging via UART, help to avoid numerous crash with ESP_LOGD
+      level: INFO   # INFO for less log, put DEBUG to view all the linky's "étiquettes" received in the logs
+      esp8266_store_log_strings_in_flash: False     #  :doc:`recommanded for ESP8266 </components/sensor/custom>`
+
+- Or change the logger UART port :
+
+.. code-block:: yaml
+
+    logger:     
+      level: INFO   # INFO for less log, put DEBUG to view all the linky's "étiquettes" received in the logs
+      esp8266_store_log_strings_in_flash: False     # recommanded for ESP8266 </components/sensor/custom>
+      hardware_uart: UART1
+
 
 See Also
 --------
