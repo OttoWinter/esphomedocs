@@ -51,9 +51,6 @@ Configuration variables:
 - **parity** (*Optional*): The parity used on the UART bus. Options: ``NONE``, ``EVEN``, ``ODD``. Defaults to ``NONE``.
 - **stop_bits** (*Optional*, int): The number of stop bits to send. Options: 1, 2. Defaults to 1.
 - **id** (*Optional*, :ref:`config-id`): Manually specify the ID for this UART hub if you need multiple UART hubs.
-
-ESP32 options:
-
 - **invert** (*Optional*, boolean): Invert the logic levels of the RX and TX pins. Options: ``True`` or ``False``. Defaults to ``False``.
 
 .. _uart-hardware_uarts:
@@ -74,7 +71,8 @@ The ESP32 has three UARTs. Any pair of GPIO pins can be used, as long as they su
 
 The ESP8266 has two UARTs; the second of which is TX-only. Only a limited set of pins can be used. ``UART0`` may
 use either ``tx_pin: GPIO1`` and ``rx_pin: GPIO3``, or ``tx_pin: GPIO15`` and ``rx_pin: GPIO13``. ``UART1`` must
-use ``tx_pin: GPIO2``. Any other combination of pins will result in use of a software UART.
+use ``tx_pin: GPIO2``. Any other combination of pins will result in use of a software UART. A combination of using 
+the ``invert: true`` and ``tx_pin: GPIO2`` will also result in the use of a software UART.
 
 .. _uart-write_action:
 
