@@ -385,6 +385,18 @@ Teckin SP20 (US)
 See :doc:`/components/sensor/hlw8012` for measuring power.
 Example config: `teckin_sp20_us.yaml <https://github.com/esphome/esphome-docs/blob/current/devices/teckin_sp20_us.yaml>`__
 
+Teckin SP25 (US)
+----------------
+
+.. pintable::
+
+    GPIO13, Button,
+    GPIO0, Blue LED (inverted),    
+    GPIO12, USB Relay,
+    GPIO15, Plug Relay,
+
+Example config: `teckin_sp25_us.yaml <https://github.com/esphome/esphome-docs/blob/current/devices/teckin_sp25_us.yaml>`__
+
 TorchStar LED Controller (Nov 2018)
 -----------------------------------
 
