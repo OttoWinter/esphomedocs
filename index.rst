@@ -307,7 +307,8 @@ Display Components
     Waveshare E-Paper, components/display/waveshare_epaper, waveshare_epaper.jpg
     Inkplate 6, components/display/inkplate, inkplate.jpg
     PCD8544 (Nokia 5110/ 3310), components/display/pcd8544, pcd8544.jpg
-
+    PxMatrix , components/display/pxmatrix, PxMatrixPanelFront.jpg
+    
 Cover Components
 ----------------
 
